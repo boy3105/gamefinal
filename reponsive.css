@@ -1,0 +1,19 @@
+/* Mobile */
+@media (max-width: 739px) {
+     header {
+       width: 100%;
+        padding-right: 14px;
+        font-size: 1em;
+        margin-right: -10px;
+    }
+    #countdown{
+        margin-left: auto;
+        text-align: center;
+    }
+    #puzzle {
+        margin-left:19%;
+    }
+    #create-grid {
+        display: block;
+    }
+}
