@@ -22,10 +22,10 @@
         </ul>
         <fieldset id="controls">
             <label for="allowed-missing-words">Allowed missing words :
-                <input id="allowed-missing-words" type="number" min="0" max="5" step="1" value="2">
+                <input id="allowed-missing-words" type="number" min="0" max="100" step="1" value="50">
             </label>
             <label for="max-grid-growth">Max grid growth :
-                <input id="max-grid-growth" type="number" min="0" max="5" step="1" value="0">
+                <input id="max-grid-growth" type="number" min="0" max="100" step="1" value="6">
             </label>
             <label for="extra-letters"> 
                 <select id="extra-letters">
@@ -46,7 +46,7 @@
                 <img class="footer-logo" src="fptu.png" alt="Logo"> <!-- Replace "path/to/your/logo.png" with the actual path to your logo image -->
             </a>
             <img class="footer-logo-2" src="t3.png" alt="Logo 2">
-            &copy; 2023 YourWebsiteName. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            &copy; PC Word-Search-Game. | <a href="https://www.facebook.com/profile.php?id=100073600056655">Huynh Nghia </a> | <a href="https://www.facebook.com/giangnam.ta.1238?mibextid=LQQJ4d">Giang Nam</a>
         </footer>
     </div>
 
@@ -56,27 +56,35 @@
     <script>
     /* Example words setup */
     [
-        /*'adorable',
-        'comique',
-        'curieuse',
-        'cailon',
-        'engagee',
-        'enjouee',
-        'fidele',
-        'futee',
-        'radieuse',
-        'sensible',
-        'sincere',*/
-        'complice',
-        'creative',
-        'elegante',
-        'farceuse',
-        'joviale',
-        'motivee',
-        'ordonnee',
-        'prudente',
-        'hehehe',
-        'tendre',
+        'Thaw',
+        'Decay',
+        'Draw',
+        'Model',
+        'Mammal',
+        'Humid',
+        'Emission',
+        'Equator',
+'Enable',
+'Nonsense',
+'Mainstream',
+'Universal',
+'Cognitive',
+'Constraint',
+'Iffy',
+'Presume',
+'Invisible',
+'Punctuality',
+'Masculine',
+'Ambiguity',
+'Spectrum',
+'Destiny',
+'Fluctuate',
+'Relocate',
+'Uninhabitable',
+'Capacity',
+'Evaporation',
+'Saturate',
+'Trigger',
     ].map(word => WordFindGame.insertWordBefore($('#add-word').parent(), word));
     $('#secret-word').val('');
 
