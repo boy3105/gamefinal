@@ -126,13 +126,14 @@ $(document).ready(() => {
                 maxAttempts: 100,
             });
         } catch (error) {
-            $('#result-message').text(`😞 ${error}, try to specify less ones`).css({color: 'red'});
-            return;
+            $('#result-message').html(`<img class="sizeimg" src="dec0911f11e9c2b79bf8.jpg" alt="Error Icon" /> ${error}, try to specify fewer items`).css({color: 'red'});
+return;
+
         }
         wordfind.print(game);
         if (window.game) {
             var emptySquaresCount = WordFindGame.emptySquaresCount();
-            $('#result-message').text(`😃 ${emptySquaresCount ? 'but there are empty squares' : ''}`).css({color: ''});
+            $('#result-message').html(`<img class="sizeimg" src="dec0911f11e9c2b79bf8.jpg" alt="Success"> ${emptySquaresCount ? 'but there are empty squares' : ''}`).css({color: ''});
         }
         window.game = game;
     }
