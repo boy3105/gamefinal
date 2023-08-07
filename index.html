@@ -5,9 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Word Find</title>
-  
     <link rel="stylesheet" type="text/css" href="wordfind.css">
-    <link rel="stylesheet" href="reponsive.css">
 </head>
 <body>
     <header>
@@ -22,20 +20,21 @@
         </ul>
         <fieldset id="controls">
             <label for="allowed-missing-words">Allowed missing words :
-                <input id="allowed-missing-words" type="number" min="0" max="100" step="1" value="25">
+                <input id="allowed-missing-words" type="number" min="0" max="5" step="1" value="0">
             </label>
             <label for="max-grid-growth">Max grid growth :
-                <input id="max-grid-growth" type="number" min="0" max="100" step="1" value="0"">
+                <input id="max-grid-growth" type="number" min="0" max="5" step="1" value="10">
             </label>
-            <label for="extra-letters"> 
+            <label for="extra-letters">
                 <select id="extra-letters">
-                    <option value="Secret-word" ></option>
-                    <option value="None"></option>
-                    <option value="Secret-word-plus-blanks"></option>
-                    <option value="Random"></option>
+                    <option value="None">none, allow blanks</option>
+                    <option value="Secret-word-plus-blanks">form a secret word but allow for extra blanks</option>
+                    <option value="Random">random</option>
                 </select>
             </label>
-            
+            <label for="secret-word">
+                
+            </label>
             <button id="create-grid">Create grid</button>
             <p id="result-message"></p>
             <button id="startButton">Start</button>
@@ -46,24 +45,23 @@
                 <img class="footer-logo" src="fptu.png" alt="Logo"> <!-- Replace "path/to/your/logo.png" with the actual path to your logo image -->
             </a>
             <img class="footer-logo-2" src="t3.png" alt="Logo 2">
-            &copy; PC Word-Search-Game. | <a href="https://www.facebook.com/profile.php?id=100073600056655">Huynh Nghia </a> | <a href="https://www.facebook.com/giangnam.ta.1238?mibextid=LQQJ4d">Giang Nam</a>
+            &copy; 2023 YourWebsiteName. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
         </footer>
     </div>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
     <script type="text/javascript" src="wordfind.js"></script> 
     <script type="text/javascript" src="wordfindgame.js"></script> 
     <script>
     /* Example words setup */
-    [
-        'Thaw',
-        'Decay',
-        'Draw',
-        'Model',
-        'Mammal',
-        'Humid',
-        'Emission',
-        'Equator',
+    const words = [ 'Gesture',
+'Means ',
+'Draw',
+'Model',
+'Mammal',
+'Humid',
+'Emission',
+'Equator',
 'Enable',
 'Nonsense',
 'Mainstream',
@@ -84,8 +82,27 @@
 'Capacity',
 'Evaporation',
 'Saturate',
-'Trigger',
-    ].map(word => WordFindGame.insertWordBefore($('#add-word').parent(), word));
+'Trigger',];
+function randomWord() {
+  if (words.length === 0) {
+    console.log("No more words to choose from.");
+    return null;
+  }
+  
+  const randomIndex = Math.floor(Math.random() * words.length);
+  const chosenWord = words[randomIndex];
+  words.splice(randomIndex, 1); // Remove the chosen word from the array
+  return chosenWord;
+}
+
+$(document).ready(() => {
+  for (let i = 0; i < 5; i++) {
+    const word = randomWord();
+    if (word) {
+      WordFindGame.insertWordBefore($('#add-word').parent(), word);
+    }
+  }
+});
     $('#secret-word').val('');
 
     /* Init */
@@ -102,7 +119,7 @@
                 allowedMissingWords: +$('#allowed-missing-words').val(),
                 maxGridGrowth: +$('#max-grid-growth').val(),
                 fillBlanks: fillBlanks,
-                allowExtraBlanks: ['none'].includes($('#extra-letters').val()),/* random */
+                allowExtraBlanks: ['random'].includes($('#extra-letters').val()),
                 maxAttempts: 100,
             });
         } catch (error) {
@@ -175,19 +192,17 @@
                 allowedMissingWords: +$('#allowed-missing-words').val(),
                 maxGridGrowth: +$('#max-grid-growth').val(),
                 fillBlanks: fillBlanks,
-                allowExtraBlanks: ['none', 'secret-word-plus-blanks'].includes($('#extra-letters').val()),
+                allowExtraBlanks: ['Random'].includes($('#extra-letters').val()),
                 maxAttempts: 100,
             });
         } catch (error) {
             $('#result-message').text(`😞 ${error}, try to specify less ones`).css({color: 'red'});
-
-
+            return;
         }
         wordfind.print(game);
         if (window.game) {
             var emptySquaresCount = WordFindGame.emptySquaresCount();
-            $('#result-message').html(`<img class="sizeimg" src="dec0911f11e9c2b79bf8.jpg" alt="Success"> ${emptySquaresCount ? 'but there are empty squares' : ''}`).css({color: ''});
-
+            $('#result-message').text(`😃 ${emptySquaresCount ? 'but there are empty squares' : ''}`).css({color: ''});
         }
         window.game = game;
     }
