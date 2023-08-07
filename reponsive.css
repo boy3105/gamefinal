@@ -20,5 +20,6 @@
     .puzzleSquare {
         height: 7vw;
         width: 2vw;
+        margin-left: 0;
     }
 }
