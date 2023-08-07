@@ -11,9 +11,14 @@
         text-align: center;
     }
     #puzzle {
-        margin-left:19%;
+     
+        margin-left:18%;
     }
     #create-grid {
         display: block;
+    }
+    .puzzleSquare {
+        width: 12%;
+        height: 12%;
     }
 }
