@@ -145,8 +145,17 @@ return;
     $('#add-word').click( () => WordFindGame.insertWordBefore($('#add-word').parent()));
 
     $('#create-grid').click(recreate);
+    
 
-    $('#solve').click(() => game.solve());
+    function solveAndShowMessage() {
+        game.solve();
+        alert("You lose");
+        clearInterval(timerId);
+    }
+
+    $('#solve').click(solveAndShowMessage);
+
+    
     </script>
     <script>
        
