@@ -298,8 +298,8 @@ header {
   margin-bottom: 20px; /* Add margin at the bottom of the header */
   font-size: 2rem;
 }
-#puzzel {
-  touch-action: none;
+/* #puzzel {
+  touch-action: none; */
 }
 .footer-logo-2 {
   display: inline-block;
