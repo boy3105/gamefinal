@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Word Find</title>
     <link rel="stylesheet" type="text/css" href="wordfind.css">
+   <!--  <link rel="stylesheet" href="reponsive.css"> -->
 </head>
 <body>
     <header>
@@ -44,7 +45,7 @@
             <a href="https://hcmuni.fpt.edu.vn" target="_blank">
                 <img class="footer-logo" src="fptu.png" alt="Logo"> <!-- Replace "path/to/your/logo.png" with the actual path to your logo image -->
             </a>
-            <img class="footer-logo-2" src="t3.png" alt="Logo 2">
+            <img class="footer-logo-2" src="" alt="Logo 2">
             &copy; PC1536 Game WORD PUZZLE | <a href="https://www.facebook.com/profile.php?id=100073600056655">Trong Nghia</a> | <a href="https://www.facebook.com/giangnam.ta.1238?mibextid=LQQJ4d">Giang Nam</a> | <a href=https://www.facebook.com/bebof200>Duy Khang</a>
         </footer>
     </div>
@@ -209,7 +210,7 @@ return;
                 maxAttempts: 100,
             });
         } catch (error) {
-            $('#result-message').text(`😞 ${error}, try to specify less ones`).css({color: 'red'});
+            $('#result-message').text(`😞  `).css({color: 'red'});
             return;
         }
         wordfind.print(game);
